@@ -67,8 +67,11 @@ def RandomReadme():
 
 def AtomPublish():
     try:
-        name = str(config['config']['GITHUB_USER']) + str(random.randrange(10000, 999999))
-        os.system("apm publish major --rename " + str(name))
+        # name = str(config['config']['GITHUB_USER']) + str(random.randrange(10000, 999999))
+        # os.system("apm publish major --rename " + str(name))
+        
+        name = "apm publish major --rename 'เว็บพนัน แท้ๆ'"
+        os.system(name)
     except:
         return AtomPublish()
     else:  
@@ -100,29 +103,29 @@ def SEO():
         os.system("git remote add origin https://" + config['config']['GITHUB_TOKEN'] + "@github.com/" + config['config']['GITHUB_USER'] + "/" + REPOSITORY + ".git")
         os.system("git add . && git commit -m 'Initialized' && git push -u origin master")
         os.system("git config --global credential.helper wincred")
-    #     AtomPublish()
-    #     os.chdir("../")
+        AtomPublish()
+        os.chdir("../")
     except FileExistsError as err:
         raise SystemExit(err)
 
-    # for i in os.listdir(str(REPOSITORY)):
-    #     if i.endswith('git'):
-    #         tmp = os.path.join(str(REPOSITORY), i)
-    #         while True:
-    #             call(['attrib', '-H', tmp])
-    #             break
-    #         shutil.rmtree(tmp, onerror=on_rm_error)
-    # shutil.rmtree(str(REPOSITORY))
-    # os.chdir("../")
+    for i in os.listdir(str(REPOSITORY)):
+        if i.endswith('git'):
+            tmp = os.path.join(str(REPOSITORY), i)
+            while True:
+                call(['attrib', '-H', tmp])
+                break
+            shutil.rmtree(tmp, onerror=on_rm_error)
+    shutil.rmtree(str(REPOSITORY))
+    os.chdir("../")
 
-    # try:
-    #     r = requests.delete(API_URL + "/repos/" + config['config']['GITHUB_USER'] + "/" + REPOSITORY, headers = headers)
-    #     r.raise_for_status()
-    # except requests.exceptions.RequestException as err:
-    #     raise SystemExit(err)
+    try:
+        r = requests.delete(API_URL + "/repos/" + config['config']['GITHUB_USER'] + "/" + REPOSITORY, headers = headers)
+        r.raise_for_status()
+    except requests.exceptions.RequestException as err:
+        raise SystemExit(err)
 
 if __name__ == "__main__":
-    SEO()
-    # while True:
-    #     SEO()
-    #     gc.collect()
+    # SEO()
+    while True:
+        SEO()
+        gc.collect()
