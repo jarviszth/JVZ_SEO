@@ -48,9 +48,6 @@ def RandomPackage(REPOSITORY):
 
 def RandomReadme():
     README = "# " + RandomName() + " " + RandomName() + " " + RandomName() + "\n\n"
-    README += "## [👉👉 สมัคร " + RandomName() + " 👈👈](" + RandomUrl() + ")\n\n"
-    README += "## [👉👉 ทางเข้า " + RandomName() + " 👈👈](" + RandomUrl() + ")\n\n"
-    README += "## [👉👉 เว็บหลัก " + RandomName() + " 👈👈](" + RandomUrl() + ")\n\n"
     for topic in range(4):
         README += "## " + RandomName() + " " + RandomName() + " " + RandomName() + " " + RandomName() + "\n\n"
         for row in range(5):
@@ -58,7 +55,6 @@ def RandomReadme():
                 README += RandomKeyword() + " "
             README += "\n"
         README += "\n"
-    README += "## ศูนย์รวมเว็บพนันออนไลน์ที่ดีที่สุด\n\n"
     for link in range(6):
         README += "[" + RandomName() + "](" + RandomUrl() + ")\n\n"
     
@@ -67,11 +63,8 @@ def RandomReadme():
 
 def AtomPublish():
     try:
-        # name = str(config['config']['GITHUB_USER']) + str(random.randrange(10000, 999999))
-        # os.system("apm publish major --rename " + str(name))
-        
-        name = "apm publish major --rename 'เว็บพนัน แท้ๆ'"
-        os.system(name)
+        name = str(config['config']['GITHUB_USER']) + str(random.randrange(10000, 999999))
+        os.system("apm publish major --rename " + str(name))
     except:
         return AtomPublish()
     else:  
